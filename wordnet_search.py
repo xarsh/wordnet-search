@@ -10,17 +10,17 @@ class WordnetSearch:
 
     def find_synlinks_recursively(self, sense):
         if sense is None:
-            print()
+            # print()
             return
 
         with SynlinkLoader() as synlink_loader, WordLoader() as word_loader, SenseLoader() as sense_loader:
             word = word_loader.load_word_with_wordid(sense.wordid).lemma
             synlink = synlink_loader.load_synlinks_with_sense_and_link(sense)
-            print(f"{word} ", end='')
+            # print(f"{word} ", end='')
             if (word in self.categories):
                 self.candidates.append(word)
             if not synlink:
-                print('')
+                # print()
                 return
             sense = sense_loader.load_sense_with_synset(synlink[0].synset2)
 
